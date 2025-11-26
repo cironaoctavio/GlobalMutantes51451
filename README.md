@@ -665,12 +665,7 @@ Runtime: Docker (Render detecta el Dockerfile automáticamente).
 
 Crear el servicio.
 
-La app se expondrá en una URL pública como:
-
-
-https://globalmutantes51451.onrender.com/
-
-Y se podrán usar los mismos endpoints:
+La app se expondrá en una URL pública y se podrán usar los mismos endpoints:
 
 POST https://globalmutantes51451.onrender.com/mutant
 
