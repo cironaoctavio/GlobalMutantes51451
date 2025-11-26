@@ -37,61 +37,61 @@ El proyecto cumple con:
 ## 📁 Estructura del Proyecto
 
 
-GlobalMutantes51451-main/
-├── Dockerfile
-├── build.gradle
-├── settings.gradle
-├── .gitignore
-├── assets/
-│   ├── capturas/
-│   │   ├── 1.png   # Swagger UI
-│   │   ├── 2.png   # /mutant 200 OK (mutante)
-│   │   ├── 3.png   # /mutant 403 Forbidden (humano)
-│   │   ├── 4.png   # /stats OK
-│   │   ├── 5.png   # (captura extra)
-│   │   ├── 6.png   # H2 con datos
-│   │   ├── 7.png
-│   │   └── 8.png
-│   └── diagramas/
-│       ├── DIagrama de secuencia POST(:mutant).png
-│       └── Diagrama de secuencia GET(:stats).png
-└── src/
-    ├── main/
-    │   ├── java/com/mutantes/mutant_detector/
-    │   │   ├── MutantDetectorApplication.java
-    │   │   ├── config/
-    │   │   │   └── SwaggerConfig.java
-    │   │   ├── controller/
-    │   │   │   └── MutantController.java
-    │   │   ├── dto/
-    │   │   │   ├── DnaRequest.java
-    │   │   │   ├── ErrorResponse.java
-    │   │   │   └── StatsResponse.java
-    │   │   ├── entity/
-    │   │   │   └── DnaRecord.java
-    │   │   ├── exception/
-    │   │   │   ├── DnaHashCalculationException.java
-    │   │   │   ├── GlobalExceptionHandler.java
-    │   │   │   └── InvalidDnaException.java
-    │   │   ├── repository/
-    │   │   │   └── DnaRecordRepository.java
-    │   │   ├── service/
-    │   │   │   ├── MutantDetector.java
-    │   │   │   ├── MutantService.java
-    │   │   │   └── StatsService.java
-    │   │   └── validation/
-    │   │       ├── ValidDnaSequence.java
-    │   │       └── ValidDnaSequenceValidator.java
-    │   └── resources/
-    │       └── application.properties
-    └── test/
-        └── java/com/mutantes/mutant_detector/
-            ├── MutantDetectorApplicationTests.java
-            ├── controller/MutantControllerTest.java
-            └── service/
-                ├── MutantDetectorTest.java
-                ├── MutantServiceTest.java
-                └── StatsServiceTest.java
+- GlobalMutantes51451-main/
+- ├── Dockerfile
+- ├── build.gradle
+- ├── settings.gradle
+- ├── .gitignore
+- ├── assets/
+- │   ├── capturas/
+- │   │   ├── 1.png   # Swagger UI
+- │   │   ├── 2.png   # /mutant 200 OK (mutante)
+- │   │   ├── 3.png   # /mutant 403 Forbidden (humano)
+- │   │   ├── 4.png   # /stats OK
+- │   │   ├── 5.png   # (captura extra)
+- │   │   ├── 6.png   # H2 con datos
+- │   │   ├── 7.png
+- │   │   └── 8.png
+- │   └── diagramas/
+- │       ├── DIagrama de secuencia POST(:mutant).png
+- │       └── Diagrama de secuencia GET(:stats).png
+- └── src/
+-     ├── main/
+-     │   ├── java/com/mutantes/mutant_detector/
+-     │   │   ├── MutantDetectorApplication.java
+-     │   │   ├── config/
+-     │   │   │   └── SwaggerConfig.java
+-     │   │   ├── controller/
+-     │   │   │   └── MutantController.java
+-     │   │   ├── dto/
+-     │   │   │   ├── DnaRequest.java
+-     │   │   │   ├── ErrorResponse.java
+-     │   │   │   └── StatsResponse.java
+-     │   │   ├── entity/
+-     │   │   │   └── DnaRecord.java
+-     │   │   ├── exception/
+-     │   │   │   ├── DnaHashCalculationException.java
+-     │   │   │   ├── GlobalExceptionHandler.java
+-     │   │   │   └── InvalidDnaException.java
+-     │   │   ├── repository/
+-     │   │   │   └── DnaRecordRepository.java
+-     │   │   ├── service/
+-     │   │   │   ├── MutantDetector.java
+-     │   │   │   ├── MutantService.java
+-     │   │   │   └── StatsService.java
+-     │   │   └── validation/
+-     │   │       ├── ValidDnaSequence.java
+-     │   │       └── ValidDnaSequenceValidator.java
+-     │   └── resources/
+-     │       └── application.properties
+-     └── test/
+-         └── java/com/mutantes/mutant_detector/
+-             ├── MutantDetectorApplicationTests.java
+-             ├── controller/MutantControllerTest.java
+-             └── service/
+-                 ├── MutantDetectorTest.java
+-                 ├── MutantServiceTest.java
+-                 └── StatsServiceTest.java
                 
 ## Lógica de Negocio – Detección de Mutantes
 El ADN se recibe como un arreglo de String, formando una matriz NxN:
