@@ -603,7 +603,9 @@ Clonar el repositorio:
 
 
 git clone https://github.com/cironaoctavio/GlobalMutantes51451.git
+
 cd GlobalMutantes51451-main
+
 Compilar y correr tests:
 
 
