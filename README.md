@@ -36,6 +36,7 @@ El proyecto cumple con:
 
 ## 📁 Estructura del Proyecto
 
+```bash
 GlobalMutantes51451-main/
 ├── Dockerfile
 ├── build.gradle
@@ -91,7 +92,8 @@ GlobalMutantes51451-main/
                 ├── MutantDetectorTest.java
                 ├── MutantServiceTest.java
                 └── StatsServiceTest.java
-                
+```
+
 ## Lógica de Negocio – Detección de Mutantes
 El ADN se recibe como un arreglo de String, formando una matriz NxN:
 
