@@ -643,14 +643,17 @@ FROM eclipse-temurin:17-jre-alpine
 COPY --from=build /app/build/libs/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
-Build local de la imagen
 ```
+Build local de la imagen
 
+```java
 docker build -t mutant-detector .
+```
 Correr el contenedor
 
-
+```java
 docker run -p 8080:8080 mutant-detector
+```
 Deploy en Render (modo Docker)
 Subir el repo a GitHub.
 
