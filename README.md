@@ -477,7 +477,7 @@ HttpRequestMethodNotSupportedException → método HTTP incorrecto (por ejemplo,
 HttpMessageNotReadableException → JSON mal formado o falta body
 
 Respuestas JSON estandarizadas:
-
+```java
 {
   "error": "Validation Error",
   "message": "El campo dna no puede estar vacío",
@@ -485,6 +485,7 @@ Respuestas JSON estandarizadas:
   "path": "/mutant",
   "timestamp": "2025-11-24T14:55:11"
 }
+```
 
 ## 🗄 Base de Datos H2
 Configuración en application.properties:
@@ -623,19 +624,21 @@ http://localhost:8080/h2-console
 🐳 Docker y Deploy (ej. Render)
 El proyecto incluye un Dockerfile multi-stage:
 
-# Etapa de construcción
+Etapa de construcción
+```java
 FROM eclipse-temurin:17-jdk-alpine as build
 WORKDIR /app
 COPY . .
 RUN ./gradlew bootJar --no-daemon
-
-# Etapa de ejecución
+```
+Etapa de ejecución
+```java
 FROM eclipse-temurin:17-jre-alpine
 COPY --from=build /app/build/libs/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
 Build local de la imagen
-
+```
 
 docker build -t mutant-detector .
 Correr el contenedor
