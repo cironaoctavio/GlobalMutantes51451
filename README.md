@@ -17,22 +17,22 @@ El proyecto cumple con:
 
 ## 🧰 Tecnologías utilizadas
 
-Java 17 → lenguaje principal del proyecto
-Spring Boot 3.2.5 → framework base para creación de API REST
-Gradle → herramienta de construcción y manejo de dependencias
-Spring Web → desarrollo de controladores HTTP/REST
-Spring Data JPA → acceso a base de datos con repositorios e interfaces
-H2 Database → base de datos en memoria para pruebas y persistencia interna
-Hibernate → ORM utilizado por defecto para el mapeo de entidades
-Spring Validation (Jakarta Validation) → validación de entrada usando anotaciones (@Valid, custom validator)
-Springdoc OpenAPI 3 (2.5.0) → documentación automática con Swagger UI
-Lombok → generación automática de getters, setters, constructores y builders
-JUnit 5 → motor principal de testing
-Mockito → mocking de servicios, repositorios y dependencias en tests
-Jacoco → cobertura de código y generación de reportes
-Docker → Dockerfile para empaquetar la aplicación en contenedor
-Git & GitHub → control de versiones y repositorio remoto
-Render → plataforma de hosting en la nube
+- Java 17 → lenguaje principal del proyecto
+- Spring Boot 3.2.5 → framework base para creación de API REST
+- Gradle → herramienta de construcción y manejo de dependencias
+- Spring Web → desarrollo de controladores HTTP/REST
+- Spring Data JPA → acceso a base de datos con repositorios e interfaces
+- H2 Database → base de datos en memoria para pruebas y persistencia interna
+- Hibernate → ORM utilizado por defecto para el mapeo de entidades
+- Spring Validation (Jakarta Validation) → validación de entrada usando anotaciones (@Valid, custom validator)
+- Springdoc OpenAPI 3 (2.5.0) → documentación automática con Swagger UI
+- Lombok → generación automática de getters, setters, constructores y builders
+- JUnit 5 → motor principal de testing
+- Mockito → mocking de servicios, repositorios y dependencias en tests
+- Jacoco → cobertura de código y generación de reportes
+- Docker → Dockerfile para empaquetar la aplicación en contenedor
+- Git & GitHub → control de versiones y repositorio remoto
+- Render → plataforma de hosting en la nube
 
 ## 📁 Estructura del Proyecto
 
