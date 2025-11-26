@@ -108,7 +108,7 @@ El ADN se recibe como un arreglo de String, formando una matriz NxN:
 ## Condiciones para ser mutante
 La clase central es MutantDetector:
 
-
+```java
 @Service
 public class MutantDetector {
 
@@ -119,6 +119,7 @@ public class MutantDetector {
         // Validaciones + lógica secuencial/paralela
     }
 }
+```
 ## Un ADN es mutante si se encuentran 2 o más secuencias de 4 letras iguales (A, T, C o G) en:
 
 Horizontales → AAAA
@@ -153,7 +154,7 @@ Mide el número total de secuencias encontradas y corta en cuanto detecta que ya
 
 La validación de forma y caracteres también se refuerza en:
 
-
+```java
 public class ValidDnaSequenceValidator implements ConstraintValidator<ValidDnaSequence, String[]> {
     @Override
     public boolean isValid(String[] dna, ConstraintValidatorContext context) {
@@ -169,6 +170,7 @@ public class ValidDnaSequenceValidator implements ConstraintValidator<ValidDnaSe
         return true;
     }
 }
+```
 ## 🏛 Arquitectura por Capas
 La API sigue una arquitectura por capas clara:
 
@@ -211,7 +213,7 @@ Config
 SwaggerConfig: definición básica de OpenAPI.
 
 ## 📊 Modelo de Datos – DnaRecord
-
+```java
 @Entity
 @Table(name = "dna_records", indexes = {
         @Index(name = "idx_dna_hash", columnList = "dnaHash", unique = true),
@@ -241,6 +243,7 @@ public class DnaRecord {
         this.createdAt = LocalDateTime.now();
     }
 }
+```
 Decisiones importantes:
 
 dnaHash único → evita duplicar ADN en base de datos.
@@ -251,7 +254,7 @@ dnaHash único → evita duplicar ADN en base de datos.
 
 ## 💾 Persistencia y Deduplicación
 La lógica de negocio está en MutantService:
-
+```java
 @Service
 @RequiredArgsConstructor
 public class MutantService {
@@ -283,14 +286,16 @@ public class MutantService {
         }
     }
 }
+```
 Comportamiento:
 
 Se calcula un hash SHA-256 a partir de la matriz dna.
 
 Se consulta el repositorio:
 
-
+```java
 Optional<DnaRecord> findByDnaHash(String dnaHash);
+```
 Si el hash ya está en la BD:
 
 Se reutiliza isMutant del registro existente (no se recalcúla el algoritmo).
@@ -304,6 +309,7 @@ Se guarda un nuevo DnaRecord con el resultado.
 ## 📊 Estadísticas – /stats
 Servicio:
 
+```java
 @Service
 @RequiredArgsConstructor
 public class StatsService {
@@ -319,8 +325,10 @@ public class StatsService {
         return new StatsResponse(mutantCount, humanCount, ratio);
     }
 }
+```
 DTO:
 
+```java
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -338,9 +346,11 @@ public class StatsResponse {
     @Schema(description = "Proporción entre mutantes y humanos", example = "0.4")
     private double ratio;
 }
+```
 🌐 Endpoints REST
 Todos los endpoints se exponen desde MutantController:
 
+```java
 @RestController
 @RequiredArgsConstructor
 @RequestMapping
@@ -364,12 +374,15 @@ public class MutantController {
         return statsService.getStats();
     }
 }
+```
 🔹 POST /mutant
+```java
 Request body:
 
 {
   "dna": ["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
 }
+```
 Respuestas:
 
 200 OK → el ADN es mutante
@@ -389,21 +402,24 @@ No mutante (403)
 🔹 GET /stats
 Respuesta:
 
+```java
 {
   "count_mutant_dna": 40,
   "count_human_dna": 100,
   "ratio": 0.4
 }
+```
 Captura:
 
 
 ## 📘 Documentación Swagger / OpenAPI
 Dependencia en build.gradle:
-
+```java
 implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
-
+```
 Configuración en SwaggerConfig:
 
+```java
 @Configuration
 public class SwaggerConfig {
 
@@ -416,11 +432,14 @@ public class SwaggerConfig {
                         .description("API para detectar mutantes - Examen MercadoLibre"));
     }
 }
+```
 Y en application.properties:
 
+```java
 springdoc.api-docs.path=/api-docs
 springdoc.swagger-ui.path=/swagger-ui.html
 springdoc.swagger-ui.enabled=true
+```
 Rutas finales:
 
 Swagger UI:
@@ -432,6 +451,7 @@ http://localhost:8080/api-docs
 ## 🧾 Manejo de Errores
 El manejo centralizado se realiza en GlobalExceptionHandler y se normaliza en el DTO ErrorResponse:
 
+```java
 @Data
 @Builder
 @AllArgsConstructor
@@ -443,6 +463,7 @@ public class ErrorResponse {
     private String path;
     private LocalDateTime timestamp;
 }
+```
 Ejemplos de errores manejados:
 
 MethodArgumentNotValidException → errores de validación (@Valid en DnaRequest)
@@ -468,6 +489,7 @@ Respuestas JSON estandarizadas:
 ## 🗄 Base de Datos H2
 Configuración en application.properties:
 
+```java
 spring.datasource.url=jdbc:h2:mem:mutantsdb
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
@@ -481,6 +503,7 @@ spring.h2.console.path=/h2-console
 
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
+```
 Consola H2:
 
 URL: http://localhost:8080/h2-console
