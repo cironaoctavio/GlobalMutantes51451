@@ -601,18 +601,22 @@ Gradle Wrapper (incluido en el proyecto)
 Pasos
 Clonar el repositorio:
 
-
+```java
 git clone https://github.com/cironaoctavio/GlobalMutantes51451.git
 
 cd GlobalMutantes51451-main
+```
 
 Compilar y correr tests:
 
-
+```java
 ./gradlew clean test
-Levantar la aplicación:
+```
 
+Levantar la aplicación:
+```java
 ./gradlew bootRun
+```
 Probar endpoints:
 
 POST http://localhost:8080/mutant
